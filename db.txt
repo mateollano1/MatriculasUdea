@@ -1,0 +1,20 @@
+create table estudiante(
+    id varchar(15) NOT NULL,
+    nombre varchar(15) NOT NULL,
+    apellido varchar (15) NOT NULL,
+    contrasena varchar (15) NOT NULL,
+    foto varchar (60) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+create table materia (
+    codigo varchar(5) NOT NULL,
+    nombre varchar (50) NOT NULL,
+    PRIMARY KEY (codigo)
+);
+create table materia_x_estudiante (
+    estudiante varchar (15),
+    materia varchar (5),
+    foreign key (estudiante) references estudiante (id),
+    foreign key (materia) references materia (codigo)
+);
