@@ -3,7 +3,7 @@ create table estudiante(
     nombre varchar(15) NOT NULL,
     apellido varchar (15) NOT NULL,
     contrasena varchar (15) NOT NULL,
-    foto varchar (60) NOT NULL,
+    foto varchar (60),
     PRIMARY KEY (id)
 );
 

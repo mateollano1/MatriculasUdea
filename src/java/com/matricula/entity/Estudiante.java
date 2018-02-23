@@ -6,25 +6,20 @@
 package com.matricula.entity;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Usuario
+ * @author user
  */
 @Entity
 @Table(name = "estudiante")
@@ -60,16 +55,9 @@ public class Estudiante implements Serializable {
     @Size(min = 1, max = 15)
     @Column(name = "contrasena")
     private String contrasena;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 60)
+    @Size(max = 60)
     @Column(name = "foto")
     private String foto;
-    @JoinTable(name = "materia_x_estudiante", joinColumns = {
-        @JoinColumn(name = "estudiante", referencedColumnName = "id")}, inverseJoinColumns = {
-        @JoinColumn(name = "materia", referencedColumnName = "codigo")})
-    @ManyToMany
-    private List<Materia> materiaList;
 
     public Estudiante() {
     }
@@ -78,12 +66,11 @@ public class Estudiante implements Serializable {
         this.id = id;
     }
 
-    public Estudiante(String id, String nombre, String apellido, String contrasena, String foto) {
+    public Estudiante(String id, String nombre, String apellido, String contrasena) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.contrasena = contrasena;
-        this.foto = foto;
     }
 
     public String getId() {
@@ -124,15 +111,6 @@ public class Estudiante implements Serializable {
 
     public void setFoto(String foto) {
         this.foto = foto;
-    }
-
-    @XmlTransient
-    public List<Materia> getMateriaList() {
-        return materiaList;
-    }
-
-    public void setMateriaList(List<Materia> materiaList) {
-        this.materiaList = materiaList;
     }
 
     @Override
