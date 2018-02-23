@@ -8,7 +8,7 @@ SE DEBE PONER SU CONTRASEÑA AHI DENTRO DEL CODIGO.
       <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
       <property name="Password" value=" ACA PONE SU CONTRASEÑA "></property>
       <property name="portNumber" value="3306"></property>
-      <property name="databaseName" value="matriculabd"></property>
+      <property name="databaseName" value="matriculadb"></property>
       <property name="User" value="root"></property>
       <property name="serverName" value="localhost"></property>
     </jdbc-connection-pool>
