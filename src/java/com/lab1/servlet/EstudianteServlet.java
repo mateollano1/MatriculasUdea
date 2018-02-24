@@ -66,7 +66,7 @@ public class EstudianteServlet extends HttpServlet {
                 String p=request.getParameter("contrasena");
                 boolean checkLogin=estudianteFacade.acceder(id, p);
                 if(checkLogin){
-                    request.getSession().setAttribute("login",id );
+                    request.getSession().setAttribute("login",id);
                     url="manager.jsp";
                 }else{
                     url="login.jsp?error=1";
