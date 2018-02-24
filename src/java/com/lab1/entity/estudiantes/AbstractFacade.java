@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.matricula.ejb.Materia;
+package com.lab1.entity.estudiantes;
 
 import java.util.List;
 import javax.persistence.EntityManager;
 
 /**
  *
- * @author Usuario
+ * @author JuanPablo
  */
 public abstract class AbstractFacade<T> {
 

@@ -3,21 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.matricula.ejb.Estudiante;
+package com.lab1.entity.materia;
 
-import com.matricula.entity.Estudiante;
+import com.lab1.entity.Materia;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author Usuario
+ * @author JuanPablo
  */
 @Stateless
-public class EstudianteFacade extends AbstractFacade<Estudiante> implements EstudianteFacadeLocal {
+public class MateriaFacade extends AbstractFacade<Materia> implements MateriaFacadeLocal {
 
-    @PersistenceContext(unitName = "MatriculasUdeaPU")
+    @PersistenceContext(unitName = "Lab1PU")
     private EntityManager em;
 
     @Override
@@ -25,8 +25,8 @@ public class EstudianteFacade extends AbstractFacade<Estudiante> implements Estu
         return em;
     }
 
-    public EstudianteFacade() {
-        super(Estudiante.class);
+    public MateriaFacade() {
+        super(Materia.class);
     }
     
 }

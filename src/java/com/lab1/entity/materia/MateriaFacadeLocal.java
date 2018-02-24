@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.matricula.ejb.Materia;
+package com.lab1.entity.materia;
 
-import com.matricula.entity.Materia;
+import com.lab1.entity.Materia;
 import java.util.List;
 import javax.ejb.Local;
 
 /**
  *
- * @author Usuario
+ * @author JuanPablo
  */
 @Local
 public interface MateriaFacadeLocal {

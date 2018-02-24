@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.matricula.ejb.Estudiante;
+package com.lab1.entity.estudiantes;
 
-import com.matricula.entity.Estudiante;
+import com.lab1.entity.Estudiante;
 import java.util.List;
 import javax.ejb.Local;
 
 /**
  *
- * @author Usuario
+ * @author JuanPablo
  */
 @Local
 public interface EstudianteFacadeLocal {
@@ -29,5 +29,7 @@ public interface EstudianteFacadeLocal {
     List<Estudiante> findRange(int[] range);
 
     int count();
+
+    boolean acceder(String id, String contrasena);
     
 }
