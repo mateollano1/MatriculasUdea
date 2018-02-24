@@ -58,15 +58,16 @@ public class EstudianteServlet extends HttpServlet {
             String action =request.getParameter("action");
             String url="index.jsp";
             if("list".equals(action)){
-                List<Materia> findAll = materiaFacade.findAll();
+                /*List<Materia> findAll = materiaFacade.findAll();
                 request.getSession().setAttribute("accounts",findAll);
-                url="listAccounts.jsp";
+                url="listAccounts.jsp";*/
             } else if ("login".equals(action)){
                 String id=request.getParameter("id");
                 String p=request.getParameter("contrasena");
                 boolean checkLogin=estudianteFacade.acceder(id, p);
                 if(checkLogin){
-                    request.getSession().setAttribute("login",id);
+                    Estudiante est = estudianteFacade.find(id);
+                    request.getSession().setAttribute("login", est.getNombre()+" "+est.getApellido());
                     url="manager.jsp";
                 }else{
                     url="login.jsp?error=1";
@@ -75,7 +76,7 @@ public class EstudianteServlet extends HttpServlet {
                 Estudiante a= new Estudiante();
                 a.setId(request.getParameter("id"));
                 a.setContrasena(request.getParameter("contrasena"));
-                a.setNombre("nombre");
+                a.setNombre(request.getParameter("nombre"));
                 a.setApellido(request.getParameter("apellido"));
                 a.setFoto(request.getParameter("foto")); //Recordar registro de foto
                 estudianteFacade.create(a);
@@ -88,12 +89,22 @@ public class EstudianteServlet extends HttpServlet {
             } else if ("logout".equals(action)) {
                 request.getSession().removeAttribute("login");
                 url="login.jsp";
+            } else if("consultaestudiante".equals(action)){
+                String id = request.getParameter("id");
+                Estudiante estudiante = estudianteFacade.find(id);
+                if(estudiante != null){
+                    request.getSession().setAttribute("idEstudiante", id);
+                    request.getSession().setAttribute("nombre", estudiante.getNombre());
+                    request.getSession().setAttribute("apellido", estudiante.getApellido());
+                    url="search.jsp?found=1";
+                }else{
+                    url="search.jsp?error=1";
+                }
             }
             response.sendRedirect(url);
         } finally {
             out.close();
-        }
-        
+        } 
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -144,6 +155,5 @@ public class EstudianteServlet extends HttpServlet {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", e);
             throw new RuntimeException(e);
         }
-    }
-
+    } 
 }

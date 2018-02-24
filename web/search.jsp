@@ -15,40 +15,51 @@
     </head>
     <body>
         <jsp:include page="menu.jsp"></jsp:include>
-            <h2>Iniciar sesión</h2>
         <c:if test="${param.error==1}">
-            <font color="red">Usuario o contraseña incorrecta. Intentelo de nuevo</font>
-        </c:if>     
+            <font color="red">Estudiante no registrado</font>
+        </c:if> 
         <div class="container well">     
             <div align="center">
-                <h1> INGRESE LOS DATOS DEL ESTUDIANTE </h1>
-                <form action="EstudianteServlet?action=login" method="post">
+                <h2> CONSULTAR ESTUDIANTE </h2>
+                <form action="EstudianteServlet?action=consultaestudiante" method="post">
                 <table>
                     <tr>
                         <th><label><b>Identificación:</b></label></th>
                         <th>
                         <input type="text" placeholder="Ingrese el id" class="form-control" name="id" required=""/> 
-                        </th>
-                    </tr>
-                    <tr>
-                        <th><label><b>Contraseña:</b></label></th>
-                        <th>
-                        <input type="password" placeholder="Ingrese la constraseña" class="form-control" name="contrasena" required=""/> 
-                        </th>
-                    </tr>
+                        </th>                  
                     <div class="break"></div>
                     <tr>
                         <td colspan="2">
-                            <input class="btn btn-info btn-lg" type="submit" name="action" value="Ingresar">
-                            <span class="glyphicon glyphicon-lock"></span>
-                            <input class="btn icon-info btn-lg" type="reset" name="action" value="Limpiar Campos">
-                            <span class="glyphicon glyphicon-remove"></span>
+                            <input class="btn btn-info btn-lg" type="submit" name="action" value="Consultar">
+                            <span class="glyphicon glyphicon-ok-sign"></span>
                         </td>
                     </tr>
                 </table>     
         </form>
                 </div>
         </div>
+        <c:if test="${param.found==1}">
+            <div class="container well">
+            <div align="center">
+                <table>
+                    <tr>
+                        <th><label><b>// FOTO</b></label></th>
+                    </tr>
+                    <tr>
+                        <th><label><b>Identificacion: ${idEstudiante}</b></label></th>
+                    </tr>
+                    <tr>
+                        <th><label><b>Nombre: ${nombre}</b></label></th>
+                    </tr>
+                    <tr>
+                        <th><label><b>Apellido: ${apellido}</b></label></th>
+                    </tr>                                       
+                    <div class="break"></div>
+                </table>    
+            </div>
+            <br>
+        </div>
+        </c:if>
     </body>
 </html>
-

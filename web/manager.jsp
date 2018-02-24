@@ -9,11 +9,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Laboratorio 1</title>
     </head>
     <body>
       <jsp:include page="menu.jsp"></jsp:include>
-        <h1>BIENVENIDO A LA PAGINA ${login}</h1>
+        <h1>Estudiante: ${login}</h1>
+        <div class="container well">
+            <h4> // Subir foto</h4>
+            <h4> // Matricular materias</h4>
     </body>
 </html>
 
